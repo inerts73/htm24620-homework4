@@ -55,7 +55,7 @@ window.fbAsyncInit = function() {
         var next = response.paging.next;
         console.log("E",next);
         $('#moreBtn').data('next',next);
-        console.log("F",$('#moreBtn'));
+        console.log("F",$('#moreBtn').data('next'));
       })
       e.preventDefault();
     });
