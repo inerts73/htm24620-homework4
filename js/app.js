@@ -57,6 +57,7 @@ window.fbAsyncInit = function() {
         console.log("E",next);
         if (next === undefined) {
           $('#moreBtn').text("顯示完畢");
+          $('#moreBtn').data('next',undefined);
         }
         else {
           $('#moreBtn').data('next',next);
