@@ -24,7 +24,7 @@ window.fbAsyncInit = function() {
         if(response.authResponse) {
             //讀取個人信息
             FB.api('/me?fields=name,picture,likes.limit(60)',function(response){
-              console.log("9", response);
+              // console.log("9", response);
               // 把資訊插入到html裡，並顯示出來
               $('.user-name').text(response.name);
               $('.user-photo').attr('src', response.picture.data.url);
@@ -32,14 +32,14 @@ window.fbAsyncInit = function() {
               // ---------------
               // 讀取 like 的列表，並儲存到 likes, 以及下一組資料的連結到 next
               var likes = response.likes.data;
-              console.log("A",likes);
+              // console.log("A",likes);
               var next = response.likes.paging.next;
-              console.log("B",next);
+              // console.log("B",next);
               //把讀到的資料放進html
               loadPagesInfo(likes);
               // save next request url to moreBtn and show it
               $('#moreBtn').removeClass('hide').data('next',next);
-              console.log("C",$('#moreBtn'));
+              // console.log("C",$('#moreBtn'));
             });
         }else{
             console.log('User cancelled login or did not fully authorize.');
@@ -52,9 +52,11 @@ window.fbAsyncInit = function() {
       $.getJSON( $(this).data('next'), function(response){
         //更新列表資料
         loadPagesInfo(response.data);
-        console.log("D",response);
+        // console.log("D",response);
         var next = response.paging.next;
-        console.log("E",next);
+        // console.log("E",next);
+        
+        // Found .data() would not work with an undefined value
         if (next === undefined) {
           $('#moreBtn').text("顯示完畢");
           $('#moreBtn').data('next',"");
@@ -62,7 +64,8 @@ window.fbAsyncInit = function() {
         else {
           $('#moreBtn').data('next',next);
         }
-        console.log("F",$('#moreBtn').data('next'));
+        
+        // console.log("F",$('#moreBtn').data('next'));
       })
       e.preventDefault();
     });
