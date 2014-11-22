@@ -24,6 +24,7 @@ window.fbAsyncInit = function() {
         if(response.authResponse) {
             //讀取個人信息
             FB.api('/me?fields=name,picture,likes.limit(60)',function(response){
+              console.log("9", response);
               // 把資訊插入到html裡，並顯示出來
               $('.user-name').text(response.name);
               $('.user-photo').attr('src', response.picture.data.url);
