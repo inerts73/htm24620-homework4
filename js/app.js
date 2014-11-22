@@ -18,7 +18,7 @@ window.fbAsyncInit = function() {
     $('#startBtn').click(function(e){
       //清空結果
       $($listRoot).empty();
-      $('#moreBtn').addClass('hide');
+      $('#moreBtn').addClass('hide').text("瀏覽更多");
       // 臉書登入SDK
       FB.login(function(response) {
         if(response.authResponse) {
