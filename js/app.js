@@ -55,6 +55,9 @@ window.fbAsyncInit = function() {
         console.log("D",response);
         var next = response.paging.next;
         console.log("E",next);
+        if (next === undefined) {
+          next = "";
+        }
         $('#moreBtn').data('next',next);
         console.log("F",$('#moreBtn').data('next'));
       })
