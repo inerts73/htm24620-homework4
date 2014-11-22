@@ -56,9 +56,11 @@ window.fbAsyncInit = function() {
         var next = response.paging.next;
         console.log("E",next);
         if (next === undefined) {
-          next = "";
+          $('#moreBtn').text("顯示完畢");
         }
-        $('#moreBtn').data('next',next);
+        else {
+          $('#moreBtn').data('next',next);
+        }
         console.log("F",$('#moreBtn').data('next'));
       })
       e.preventDefault();
